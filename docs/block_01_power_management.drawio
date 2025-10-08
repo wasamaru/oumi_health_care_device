@@ -1,0 +1,79 @@
+<mxfile host="app.diagrams.net" modified="2025-10-06T00:00:00.000Z" agent="Manus-AI" version="20.6.3" type="device">
+  <diagram id="power-mgmt" name="電源管理ブロック">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- タイトル -->
+        <mxCell id="2" value="電源管理ブロック" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=20;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="300" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- 入力: CN1 USB 5V -->
+        <mxCell id="3" value="CN1 microUSB (5V入力)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656" vertex="1" parent="1">
+          <mxGeometry x="40" y="100" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- 入力: CN4-7 DC Jack (電源/センサ兼用) -->
+        <mxCell id="4" value="CN4〜CN7 DCジャック (電源/センサ)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656" vertex="1" parent="1">
+          <mxGeometry x="40" y="180" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- スイッチ S1 -->
+        <mxCell id="5" value="S1 電源ボタン (SKHUBHE010)" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6" vertex="1" parent="1">
+          <mxGeometry x="300" y="80" width="220" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- U4 LTC2955 -->
+        <mxCell id="6" value="U4 LTC2955 プッシュボタン電源コントローラ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" vertex="1" parent="1">
+          <mxGeometry x="560" y="80" width="300" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- U3 TPS630250 -->
+        <mxCell id="7" value="U3 TPS630250 昇降圧DC-DC\nVout=+3.3V" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366" vertex="1" parent="1">
+          <mxGeometry x="560" y="200" width="300" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- U5 TPS22919 ロードスイッチ -->
+        <mxCell id="8" value="U5 TPS22919 ロードスイッチ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450" vertex="1" parent="1">
+          <mxGeometry x="920" y="200" width="240" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- 出力 +3.3V -->
+        <mxCell id="9" value="+3.3V (主電源)" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#cce5ff;strokeColor=#6c8ebf" vertex="1" parent="1">
+          <mxGeometry x="920" y="130" width="180" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- 出力 VDD_MID -->
+        <mxCell id="10" value="VDD_MID (スイッチ電源)" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#b85450" vertex="1" parent="1">
+          <mxGeometry x="1200" y="205" width="200" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- 配線: CN1 -> U4 -->
+        <mxCell id="100" edge="1" parent="1" source="3" target="6" style="endArrow=classic;strokeColor=#6c8ebf"/>
+        <!-- 配線: CN4-7 -> U4 (電源入力系統) -->
+        <mxCell id="101" edge="1" parent="1" source="4" target="6" style="endArrow=classic;dashed=1;strokeColor=#6c8ebf"/>
+        <!-- 配線: S1 -> U4 -->
+        <mxCell id="102" edge="1" parent="1" source="5" target="6" style="endArrow=classic;strokeColor=#9673a6"/>
+        <!-- 配線: U4(EN) -> U3 -->
+        <mxCell id="103" edge="1" parent="1" source="6" target="7" style="endArrow=classic;strokeColor=#82b366"/>
+        <!-- 配線: U3 -> +3.3V -->
+        <mxCell id="104" edge="1" parent="1" source="7" target="9" style="endArrow=classic;strokeColor=#82b366"/>
+        <!-- 配線: +3.3V -> U5 入力 -->
+        <mxCell id="105" edge="1" parent="1" source="9" target="8" style="endArrow=classic;strokeColor=#b85450"/>
+        <!-- 配線: U5 -> VDD_MID -->
+        <mxCell id="106" edge="1" parent="1" source="8" target="10" style="endArrow=classic;strokeColor=#b85450"/>
+
+        <!-- 注記 -->
+        <mxCell id="11" value="注記:\n- U4長押し検出により電源ON/OFF\n- U3で+3.3V生成\n- U5でVDD_MIDを制御 (省電力)" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="40" y="270" width="500" height="110" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+
+
+

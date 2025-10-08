@@ -1,0 +1,44 @@
+<mxfile host="app.diagrams.net" modified="2025-10-06T00:00:00.000Z" agent="Manus-AI" version="20.6.3" type="device">
+  <diagram id="connectivity" name="接続インターフェースブロック">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- タイトル -->
+        <mxCell id="2" value="接続インターフェース" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=20;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="300" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- CN1 USB -->
+        <mxCell id="3" value="CN1 microUSB (電源入力)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656" vertex="1" parent="1">
+          <mxGeometry x="60" y="120" width="250" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- CN4〜CN7 -->
+        <mxCell id="4" value="CN4〜CN7 DCジャック\n(センサー/電源接続)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656" vertex="1" parent="1">
+          <mxGeometry x="60" y="220" width="300" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- CN3 SWD -->
+        <mxCell id="5" value="CN3 SWD (デバッグ)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" vertex="1" parent="1">
+          <mxGeometry x="60" y="340" width="240" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- TP4〜TP6 -->
+        <mxCell id="6" value="TP4〜TP6 テストポイント" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6" vertex="1" parent="1">
+          <mxGeometry x="60" y="430" width="240" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- 供給先ラベル -->
+        <mxCell id="7" value="供給先:\n- 電源管理ブロック (CN1)\n- センサー出力/電源管理 (CN4〜7)\n- 無線通信・マイコン (CN3)" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="420" y="220" width="400" height="180" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+
+
+

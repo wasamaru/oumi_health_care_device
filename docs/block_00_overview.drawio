@@ -1,0 +1,78 @@
+<mxfile host="app.diagrams.net" modified="2025-10-06T00:00:00.000Z" agent="Manus-AI" version="20.6.3" type="device">
+  <diagram id="overview" name="全体ブロック図">
+    <mxGraphModel dx="1400" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- タイトル -->
+        <mxCell id="title" value="MasterfootSensor 全体ブロック図" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=22;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="520" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- 入力: CN1 USB 5V -->
+        <mxCell id="cn1" value="CN1 microUSB 5V" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656" vertex="1" parent="1">
+          <mxGeometry x="60" y="160" width="200" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- 電源管理ブロック -->
+        <mxCell id="pwr" value="電源管理\nU4: LTC2955 (PB電源)\nU3: TPS630250 (+3.3V生成)\nU5: TPS22919 (VDD_MID)" style="swimlane;startSize=28;rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366" vertex="1" parent="1">
+          <mxGeometry x="300" y="120" width="360" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- +3.3V ノード -->
+        <mxCell id="v33" value="+3.3V" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#cfe2f3;strokeColor=#6c8ebf" vertex="1" parent="1">
+          <mxGeometry x="700" y="140" width="120" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- VDD_MID ノード -->
+        <mxCell id="vmid" value="VDD_MID" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#b85450" vertex="1" parent="1">
+          <mxGeometry x="700" y="220" width="140" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- マイコン・無線ブロック -->
+        <mxCell id="mcu" value="無線通信・マイコン\nU1: EYSHCNZXZ (nRF52832)\n電源: +3.3V (L2経由) / 一部VDD_MID (L3)\nI/F: SWD(CN3), GPIO" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" vertex="1" parent="1">
+          <mxGeometry x="880" y="120" width="380" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- UIブロック -->
+        <mxCell id="ui" value="ユーザーインターフェース\nS1(電源) → U4\nS2(DIP), S3(SW) ↔ U1\nD1-3, D11 ← U1/電源" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656" vertex="1" parent="1">
+          <mxGeometry x="880" y="340" width="380" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- センサー出力ブロック -->
+        <mxCell id="outs" value="センサー出力(4ch)\nQ1-4 (FDV305N), D7-10\nR22-29, CN4-7\n電源: VDD_MID\n制御: U1 GPIO/PWM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450" vertex="1" parent="1">
+          <mxGeometry x="1300" y="120" width="420" height="220" as="geometry"/>
+        </mxCell>
+
+        <!-- 接続I/Fブロック -->
+        <mxCell id="ifc" value="接続I/F\nCN1(USB), CN3(SWD)\nCN4-7(DCジャック)\nTP4-6(テストポイント)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6" vertex="1" parent="1">
+          <mxGeometry x="60" y="360" width="300" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- 矢印・配線 -->
+        <mxCell id="e1" edge="1" parent="1" source="cn1" target="pwr" style="endArrow=classic;strokeColor=#82b366"/>
+        <mxCell id="e2" edge="1" parent="1" source="pwr" target="v33" style="endArrow=classic;strokeColor=#6c8ebf"/>
+        <mxCell id="e3" edge="1" parent="1" source="pwr" target="vmid" style="endArrow=classic;strokeColor=#b85450"/>
+        <mxCell id="e4" edge="1" parent="1" source="v33" target="mcu" style="endArrow=classic;strokeColor=#6c8ebf"/>
+        <mxCell id="e5" edge="1" parent="1" source="vmid" target="mcu" style="endArrow=classic;dashed=1;strokeColor=#b85450"/>
+        <mxCell id="e6" edge="1" parent="1" source="vmid" target="outs" style="endArrow=classic;strokeColor=#b85450"/>
+        <mxCell id="e7" edge="1" parent="1" source="mcu" target="outs" style="endArrow=classic;strokeColor=#9673a6"/>
+        <mxCell id="e8" edge="1" parent="1" source="ifc" target="pwr" value="CN1" style="endArrow=classic;dashed=1;strokeColor=#d6b656"/>
+        <mxCell id="e9" edge="1" parent="1" source="ifc" target="mcu" value="CN3" style="endArrow=classic;dashed=1;strokeColor=#6c8ebf"/>
+        <mxCell id="e10" edge="1" parent="1" source="ifc" target="outs" value="CN4-7" style="endArrow=classic;dashed=1;strokeColor=#d6b656"/>
+        <mxCell id="e11" edge="1" parent="1" source="mcu" target="ui" style="endArrow=classic;strokeColor=#9673a6"/>
+        <mxCell id="e12" edge="1" parent="1" source="ui" target="pwr" value="S1→U4" style="endArrow=classic;strokeColor=#b85450"/>
+
+        <!-- 注記 -->
+        <mxCell id="note" value="動作フロー:\n1) CN1から5V入力 → U3で+3.3V生成\n2) S1長押し → U4がU5/電源許可\n3) U5でVDD_MID供給 → センサー系/一部周辺\n4) U1起動 → GPIO/PWMでQ1-4制御, LED表示, DIP読取\n5) CN3でデバッグ, CN4-7へ出力供給" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="60" y="540" width="780" height="160" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+
+
+

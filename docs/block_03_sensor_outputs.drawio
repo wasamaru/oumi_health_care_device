@@ -1,0 +1,54 @@
+<mxfile host="app.diagrams.net" modified="2025-10-06T00:00:00.000Z" agent="Manus-AI" version="20.6.3" type="device">
+  <diagram id="sensor-outputs" name="センサー出力ブロック">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- タイトル -->
+        <mxCell id="2" value="センサー出力 (Q1〜Q4, D7〜D10, CN4〜CN7)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=20;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="20" y="10" width="700" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- 入力: VDD_MID -->
+        <mxCell id="3" value="VDD_MID" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#b85450" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="150" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- チャンネル群 -->
+        <mxCell id="4" value="CH1: Q1 + D7 → CN4\nCH2: Q2 + D8 → CN5\nCH3: Q3 + D9 → CN6\nCH4: Q4 + D10 → CN7" style="swimlane;horizontal=0;startSize=28;rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf" vertex="1" parent="1">
+          <mxGeometry x="240" y="100" width="520" height="220" as="geometry"/>
+        </mxCell>
+
+        <!-- ゲート抵抗/プルダウン -->
+        <mxCell id="5" value="ゲート抵抗: R22,R24,R26,R28 (100Ω)\nプルダウン: R23,R25,R27,R29 (10kΩ)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6" vertex="1" parent="1">
+          <mxGeometry x="240" y="340" width="520" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- GPIO制御入力 -->
+        <mxCell id="6" value="GPIO制御 (U1)\nP0.06 / P0.07 / P0.04 / P0.02" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656" vertex="1" parent="1">
+          <mxGeometry x="820" y="160" width="260" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- 配線: VDD_MID -> チャンネル群 -->
+        <mxCell id="100" edge="1" parent="1" source="3" target="4" style="endArrow=classic;strokeColor=#b85450"/>
+        <!-- 配線: GPIO -> チャンネル群 -->
+        <mxCell id="101" edge="1" parent="1" source="6" target="4" style="endArrow=classic;strokeColor=#9673a6"/>
+
+        <!-- 出力: CN4〜CN7 -->
+        <mxCell id="7" value="出力: CN4〜CN7 (各チャンネル独立制御)" style="shape=process;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366" vertex="1" parent="1">
+          <mxGeometry x="240" y="420" width="520" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- 注記 -->
+        <mxCell id="8" value="注記:\n- MOSFET: FDV305N (N-ch)\n- ダイオード: 1N4148 (逆起電力保護)\n- PWM制御対応 (デューティで電力調整)" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="40" y="420" width="180" height="110" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+
+
+
